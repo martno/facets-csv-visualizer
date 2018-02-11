@@ -1,5 +1,5 @@
 # facets-csv-visualizer
-Simple wrapper around Facets (https://pair-code.github.io/facets/) to visualize csv files
+Simple wrapper around Facets (https://pair-code.github.io/facets/) to easily visualize csv files
 
 
 # Installation
@@ -41,7 +41,7 @@ Options:
 
 ## Examples
 
-`python3 facets_csv_explorer.py --csv=iris.csv`
+`python3 facets_csv_visualizer.py --csv=iris.csv`
 
-`python3 facets_csv_explorer.py --csv=iris.csv --title=Iris --overview_groupby=species --color_by=species`
+`python3 facets_csv_visualizer.py --csv=iris.csv --title=Iris --overview_groupby=species --color_by=species`
 
