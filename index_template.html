@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title>{title}</title>
+    <link rel="import" href="https://raw.githubusercontent.com/PAIR-code/facets/master/facets-dist/facets-jupyter.html">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/webcomponents-lite.js"></script>
+</head>
+
+<body>
+
+<div id="main">
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'Overview')">Overview</button>
+        <button class="tablinks" onclick="openTab(event, 'Dive')" id="defaultOpen">Dive</button>
+        <div>{announcement}</div>
+    </div>
+
+    <div id="Overview" class="tabcontent">
+        <facets-overview id="elem"></facets-overview>
+    </div>
+        <div id="Dive" class="tabcontent">
+        <facets-dive id="elem_id"></facets-dive>
+    </div>
+</div>
+
+<script>
+    var dive = document.querySelector("#elem_id");
+    dive.data = {jsonstr};
+
+    settings = {dive_settings}
+    for (var key in settings) {{
+        if (settings.hasOwnProperty(key) && settings[key].length > 0) {{
+            dive[key] = settings[key];
+        }}
+    }}
+
+    document.querySelector("#elem").protoInput = "{protostr}";
+</script>
+
+<script>
+    function openTab(evt, tabName) {{
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {{
+            tabcontent[i].style.display = "none";
+        }}
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {{
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }}
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }}
+
+    document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html>
